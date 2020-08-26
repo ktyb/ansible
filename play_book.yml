@@ -4,7 +4,7 @@
     - name: Change user password
       change_password:
        token: {{ TOKEN }}
-       user_id: "77486b05-8196-4214-99ee-064448aa8124"
+       user_id: {{ U_ID }}
       register: new_pass
 
     - debug: 
@@ -13,6 +13,7 @@
     - name: Delete all AD APPs associated to account
       delete_ad_apps:
        token: {{ TOKEN }}
+       user_id: {{ U_ID }}
       register: "res"
 
     - debug: 
