@@ -1,0 +1,19 @@
+- hosts: localhost
+  connection: local
+  tasks:
+    - name: Change user password
+      change_password:
+       token: {{ TOKEN }}
+       user_id: "77486b05-8196-4214-99ee-064448aa8124"
+      register: new_pass
+
+    - debug: 
+       msg: "{{ new_pass }}"
+
+    - name: Delete all AD APPs associated to account
+      delete_ad_apps:
+       token: {{ TOKEN }}
+      register: "res"
+
+    - debug: 
+       msg: "{{ res }}"
