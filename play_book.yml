@@ -1,10 +1,16 @@
 - hosts: localhost
   connection: local
   tasks:
+    - include_vars:
+       file: include/vars.json
+       name: json_vars
+
+    - debug: var=json_vars
+
     - name: Change user password
       change_password:
-       token: "{{ TOKEN }}"
-       user_id: "{{ U_ID }}"
+       token: "{{ json_vars.token }}"
+       user_id: "{{ json_vars.u1 }}"
       register: new_pass
 
     - debug: 
@@ -12,9 +18,13 @@
 
     - name: Delete all AD APPs associated to account
       delete_ad_apps:
-       token: "{{ TOKEN }}"
-       user_id: "{{ U_ID }}"
+       token: "{{ json_vars.token }}"
+       user_id: "{{ json_vars.u1 }}"
       register: "res"
 
     - debug: 
        msg: "{{ res }}"
+
+    - copy:
+       content: "{{ json_vars }}"
+       dest: "include/dsds.json"

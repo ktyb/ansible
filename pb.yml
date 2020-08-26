@@ -1,0 +1,9 @@
+- hosts: localhost
+  connection: local
+  tasks:
+    - name: Update Tower Credential
+      tower_credential:
+       name: Azure11
+       kind: azure_rm
+       organization: Default
+       username: "test"
