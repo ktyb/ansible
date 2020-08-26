@@ -3,8 +3,8 @@
   tasks:
     - name: Change user password
       change_password:
-       token: {{ TOKEN }}
-       user_id: {{ U_ID }}
+       token: "{{ TOKEN }}"
+       user_id: "{{ U_ID }}"
       register: new_pass
 
     - debug: 
@@ -12,8 +12,8 @@
 
     - name: Delete all AD APPs associated to account
       delete_ad_apps:
-       token: {{ TOKEN }}
-       user_id: {{ U_ID }}
+       token: "{{ TOKEN }}"
+       user_id: "{{ U_ID }}"
       register: "res"
 
     - debug: 
