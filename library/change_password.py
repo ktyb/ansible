@@ -1,19 +1,13 @@
 #!/usr/bin/python
 
 from ansible.module_utils.basic import *
-from bs4 import BeautifulSoup
 import requests
-from urllib.request import urlopen
 
 
 api_url = "https://graph.microsoft.com/v1.0/users/"
-pass_url = "https://untroubled.org/pwgen/ppgen.cgi"	#can set some parameters to url for stronger password
 
 def gen_pass():
-	html_site = urlopen(pass_url).read()
-	bs = BeautifulSoup(html_site, features="lxml")
-	table = bs.findAll('table')[2]
-	value = table.select('tt')[0].text
+	value = "Kdw23#odkr45"
 
 	return value
 
